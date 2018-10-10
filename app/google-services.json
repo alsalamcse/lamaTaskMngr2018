@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "124171262326",
+    "firebase_url": "https://lamataskmngr2018.firebaseio.com",
+    "project_id": "lamataskmngr2018",
+    "storage_bucket": "lamataskmngr2018.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:124171262326:android:71e4cbd16064b33b",
+        "android_client_info": {
+          "package_name": "com.sholi.lama.lamataskmngr2018"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "124171262326-62ajkenihnkdjcq83fj6k4phjvk3d37t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sholi.lama.lamataskmngr2018",
+            "certificate_hash": "013f43c9a5d380c46de43c04644418dbe5d2a253"
+          }
+        },
+        {
+          "client_id": "124171262326-4gd0qv5294s9ls269radbd9f8q5u98ek.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDalZXAw7bdrgIejNEE4lC6WoaIKoMWXk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "124171262326-4gd0qv5294s9ls269radbd9f8q5u98ek.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
