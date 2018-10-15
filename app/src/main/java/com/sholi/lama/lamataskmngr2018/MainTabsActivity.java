@@ -151,12 +151,12 @@ public class MainTabsActivity extends AppCompatActivity {
                     myTasksFragment = new MyTasksFragment();
                 return myTasksFragment;
             }
-                if (position==0) {
+                if (position==1) {
                     if (historyFragment == null)
                         historyFragment = new TasksHistoryFragment();
                     return historyFragment;
                 }
-            if (position==0) {
+            if (position==2) {
                 if (profileFragment == null)
                     profileFragment = new ProfileFragment();
                 return profileFragment;
