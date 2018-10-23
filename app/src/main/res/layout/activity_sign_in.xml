@@ -58,4 +58,13 @@
         android:inputType="numberPassword"
         tools:layout_editor_absoluteX="61dp"
         tools:layout_editor_absoluteY="266dp" />
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        tools:layout_editor_absoluteX="133dp"
+        tools:layout_editor_absoluteY="352dp"
+        tools:text="Save" />
 </android.support.constraint.ConstraintLayout>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".taskfragments.AddTaskActivity">
+
+    <EditText
+        android:id="@+id/etTaskTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Title"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="6dp"
+        tools:text="Title" />
+
+    <EditText
+        android:id="@+id/etTaskText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Text"
+        android:inputType="textPersonName"
+        android:text="Name"
+        tools:layout_editor_absoluteX="6dp"
+        tools:layout_editor_absoluteY="86dp"
+        tools:text="Text" />
+
+    <SeekBar
+        android:id="@+id/seekBar2"
+        android:layout_width="312dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="179dp" />
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="312dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="16dp"
+        android:max="10"
+        android:progress="3"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="224dp" />
+
+</android.support.constraint.ConstraintLayout>
