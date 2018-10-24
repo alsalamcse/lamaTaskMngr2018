@@ -15,6 +15,7 @@ private EditText etText,etTitle,etDueDate;
 private SeekBar skbrImportnat,skbrNercessary;
 private Button btnSave,btnDastePicker;
 
+
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
