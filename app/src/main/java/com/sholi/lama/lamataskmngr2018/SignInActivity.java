@@ -32,39 +32,26 @@ public class SignInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
-            String email=etEmail.getText().toString();
-            String password=etPassword.getText().toString();
-            String fname=etFirstName.getText().toString();
-            String lname=etLastName.getText().toString();
-            String phone=etPhone.getText().toString();
             auth = FirebaseAuth.getInstance();
             FirebaseUser firebaseUser;
             firebaseUser=auth.getCurrentUser();
 
 
-            btnSave.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                   dataHandler();
 
-                }
-
-            });
         etFirstName = (EditText)findViewById(R.id.etFirstName);
         etLastName=(EditText)findViewById(R.id.etLastName);
         etPhone=(EditText)findViewById(R.id.etLastName);
          etEmail=(EditText)findViewById(R.id.etEmail);
           etPassword=(EditText)findViewById(R.id.etPassword);
         btnSave=(Button)findViewById(R.id.btnSave);
-        if (firebaseUser == null) {
-            startActivity(new Intent(this, SignInActivity.class));
-            finish();
-            return;
-        } else {
-            String userName = firebaseUser.getDisplayName();
-            if (firebaseUser.getPhotoUrl() != null) {
-                String photoUrl = firebaseUser.getPhotoUrl().toString();
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dataHandler();
             }
+        });
+
+
         }
         FirebaseAuth.AuthStateListener authStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -82,20 +69,24 @@ public class SignInActivity extends AppCompatActivity {
 
 
         };
-    }
+
 
     private void dataHandler() {
         {
             boolean isok=true;
 
-            String email = new String();
-            String password = new String();
+            String email=etEmail.getText().toString();
+            String password=etPassword.getText().toString();
+            String fname=etFirstName.getText().toString();
+            String lname=etLastName.getText().toString();
+            String phone=etPhone.getText().toString();
+
             if (email.length()<4||email.indexOf('@')<0)
             {
                 etEmail.setError("Wrong Email");
                 isok = false;
             }
-            if (password.length()<3){
+            if (password.length()<8){
                 etPassword.setError("Have to be at least 8 char");
                 isok=false;
             }
@@ -121,7 +112,15 @@ public class SignInActivity extends AppCompatActivity {
                 }
             }
         });
-    }
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i= new Intent(getApplication(),LoginActivity.class);
+                startActivity(i);
+            }
+        });    }
+
+
 
 
 }

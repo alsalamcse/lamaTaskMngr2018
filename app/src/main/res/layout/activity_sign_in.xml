@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".SignInActivity">
 
     <EditText
@@ -16,7 +17,8 @@
         android:inputType="textPersonName"
         android:text="Name"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="61dp" />
+        tools:layout_editor_absoluteX="61dp"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/etLastName"
@@ -27,7 +29,8 @@
         android:inputType="textPersonName"
         android:text="Name"
         tools:layout_editor_absoluteX="61dp"
-        tools:layout_editor_absoluteY="71dp" />
+        tools:layout_editor_absoluteY="71dp"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/etPhone"
@@ -37,7 +40,8 @@
         android:hint="phone"
         android:inputType="phone"
         tools:layout_editor_absoluteX="61dp"
-        tools:layout_editor_absoluteY="141dp" />
+        tools:layout_editor_absoluteY="141dp"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/etEmail"
@@ -47,7 +51,8 @@
         android:hint="email"
         android:inputType="textEmailAddress"
         tools:layout_editor_absoluteX="61dp"
-        tools:layout_editor_absoluteY="204dp" />
+        tools:layout_editor_absoluteY="204dp"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/etPassword"
@@ -57,14 +62,16 @@
         android:hint="password"
         android:inputType="numberPassword"
         tools:layout_editor_absoluteX="61dp"
-        tools:layout_editor_absoluteY="266dp" />
+        tools:layout_editor_absoluteY="266dp"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/btnSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="Save"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="133dp"
         tools:layout_editor_absoluteY="352dp"
         tools:text="Save" />
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

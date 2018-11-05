@@ -1,5 +1,6 @@
 package com.sholi.lama.lamataskmngr2018;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -26,6 +27,8 @@ public class LoginActivity extends AppCompatActivity {
         btnSignUp.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent i=new Intent(getApplicationContext(),SignInActivity.class);
+                startActivity(i);
 
             }
         });
@@ -34,9 +37,15 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
+                Intent i=new Intent(getApplicationContext(),SignInActivity.class);
+                startActivity(i);
 
 
-            }
+                }
+
+
+
+
         });
     }
 }
