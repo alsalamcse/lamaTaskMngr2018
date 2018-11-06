@@ -24,28 +24,32 @@ public class LoginActivity extends AppCompatActivity {
         btnSignIn = (Button) findViewById(R.id.btnSignIn);
         btnSignUp = (Button) findViewById(R.id.btnSignUp);
 
-        btnSignUp.setOnClickListener(new OnClickListener() {
+        btnSignIn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(getApplicationContext(),SignInActivity.class);
-                startActivity(i);
-
+                dataHandler();
             }
         });
-        btnSignIn.setOnClickListener(new OnClickListener() {
+    }
 
+    private void dataHandler() {
+        boolean isok = true;
 
-            @Override
-            public void onClick(View view) {
-                Intent i=new Intent(getApplicationContext(),SignInActivity.class);
-                startActivity(i);
+        String email = etEmail.getText().toString();
+        String password = etPassword.getText().toString();
+        if (email.length() < 4) {
+            etEmail.setError("Title have to be than 4 Char");
+            isok = false;
+        }
+        if (password.length() < 4) {
+            etPassword.setError("Title have to be than 4 Char");
+            isok = false;
 
+        }
 
-                }
+    }
+    private void signIn(String email,String password){
+        auth.signInWithEmailAndPassword(email,password).addOnCompleteListener(LoginActivity.this)
 
-
-
-
-        });
     }
 }
