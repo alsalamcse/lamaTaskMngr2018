@@ -1,12 +1,20 @@
 package com.sholi.lama.lamataskmngr2018;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText etEmail;
@@ -37,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
 
         String email = etEmail.getText().toString();
         String password = etPassword.getText().toString();
+        signIn(email,password);
         if (email.length() < 4) {
             etEmail.setError("Title have to be than 4 Char");
             isok = false;
@@ -49,7 +58,23 @@ public class LoginActivity extends AppCompatActivity {
 
     }
     private void signIn(String email,String password){
-        auth.signInWithEmailAndPassword(email,password).addOnCompleteListener(LoginActivity.this)
+        FirebaseAuth auth=FirebaseAuth.getInstance().getInstance();
+        auth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()){
+                    Toast.makeText(LoginActivity.this,"signIn Successful",Toast.LENGTH_SHORT).show();
+                    Intent intent=new Intent((LoginActivity.this,MainFCMAtivity.class));
+                    startActivity(intent);
+                    finish();
+
+            }
+            else {
+                    Toast.makeText(LoginActivity.this,"signIn failed"+task.getException().getMessage())
+                }
+        })
+
+        }
 
     }
 }

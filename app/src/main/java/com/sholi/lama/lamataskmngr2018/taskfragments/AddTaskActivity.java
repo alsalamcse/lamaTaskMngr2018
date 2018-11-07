@@ -14,8 +14,10 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.sholi.lama.lamataskmngr2018.R;
+import com.sholi.lama.lamataskmngr2018.data.MyTask;
 
 import java.util.Calendar;
+import java.util.Date;
 
 public class AddTaskActivity extends AppCompatActivity {
 private EditText etText,etTitle,etDueDate;
@@ -75,6 +77,10 @@ private int mYear,mMonth,mDay;
         if (DueDate.length()<4){
             etDueDate.setError("DueDate have to be than 4 Char");
         }
+        MyTask task=new MyTask();
+        task.setCreatedAt(new Date());
+        task.setDueDate(new Date(DueDate));
+        task.setText(Text);
 
         }
         @RequiresApi(api = Build.VERSION_CODES.N)
