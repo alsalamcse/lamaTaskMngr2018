@@ -23,8 +23,8 @@ public class MyTask {
         this.key = key;
     }
 
-    public String getTitle() {
-        return title;
+    public String getTitle(String title) {
+        return this.title;
     }
 
     public void setTitle(String title) {
@@ -47,7 +47,7 @@ public class MyTask {
         this.important = important;
     }
 
-    public int getNecessary() {
+    public int getNecessary(int nercessary) {
         return necessary;
     }
 
@@ -83,4 +83,9 @@ public class MyTask {
                 ", dueDate=" + dueDate +
                 '}';
     }
+
+    public void setOwner(String email) {
+
+    }
+
 }

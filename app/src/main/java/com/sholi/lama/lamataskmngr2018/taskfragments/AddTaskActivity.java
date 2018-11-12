@@ -13,9 +13,13 @@ import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.sholi.lama.lamataskmngr2018.R;
 import com.sholi.lama.lamataskmngr2018.data.MyTask;
 
+import java.security.Key;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -59,30 +63,42 @@ private int mYear,mMonth,mDay;
     }
 
     private void dataHandler() {
-        boolean isok=true;
+        boolean isok = true;
 
-        String Text=etText.getText().toString();
-        String Title=etTitle.getText().toString();
-        String DueDate=etDueDate.getText().toString();
-        int Important=skbrImportnat.getProgress();
-        int Nercessary=skbrNercessary.getProgress();
-        if (Title.length()<4){
+        String Text = etText.getText().toString();
+        String Title = etTitle.getText().toString();
+        String DueDate = etDueDate.getText().toString();
+        int Important = skbrImportnat.getProgress();
+        int Nercessary = skbrNercessary.getProgress();
+        if (Title.length() < 4) {
             etTitle.setError("Title have to be than 4 Char");
-            isok=false;
+            isok = false;
         }
-        if (Text.length()<4){
+        if (Text.length() < 4) {
             etText.setError("Text have to be than 4 Char");
-            isok=false;
+            isok = false;
         }
-        if (DueDate.length()<4){
+        if (DueDate.length() < 4) {
             etDueDate.setError("DueDate have to be than 4 Char");
+            isok = false;
         }
-        MyTask task=new MyTask();
-        task.setCreatedAt(new Date());
-        task.setDueDate(new Date(DueDate));
-        task.setText(Text);
+        if (isok) {
+            MyTask task = new MyTask();
+            task.setCreatedAt(new Date());
+            task.setDueDate(new Date(DueDate));
+            task.setText(Text);
+            task.getTitle(Title);
+            task.setImportant(Important);
+            task.getNecessary(Nercessary);
 
+            FirebaseAuth auth = FirebaseAuth.getInstance();
+            task.setOwner(auth.getCurrentUser().getEmail());
+            DatabaseReference refrence = FirebaseDatabase.getInstance().getReference();
+            String key = refrence.child("MyTasks").push().getKey();
+            task.setKey(key);
+            refrence.child("MyTasks")
         }
+    }
         @RequiresApi(api = Build.VERSION_CODES.N)
         public void onClick(View v){
         if (v==btnDastePicker){
@@ -100,5 +116,8 @@ private int mYear,mMonth,mDay;
             datePickerDialog.show();
         }
         }
-    }
+
+
+
+}
 
