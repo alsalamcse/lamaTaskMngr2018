@@ -3,6 +3,7 @@ package com.sholi.lama.lamataskmngr2018.taskfragments;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,7 +13,10 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -56,6 +60,7 @@ private int mYear,mMonth,mDay;
             @Override
             public void onClick(View view) {
 
+
             }
         });
 
@@ -65,7 +70,7 @@ private int mYear,mMonth,mDay;
     private void dataHandler() {
         boolean isok = true;
 
-        String Text = etText.getText().toString();
+        final String Text = etText.getText().toString();
         String Title = etTitle.getText().toString();
         String DueDate = etDueDate.getText().toString();
         int Important = skbrImportnat.getProgress();
@@ -96,8 +101,23 @@ private int mYear,mMonth,mDay;
             DatabaseReference refrence = FirebaseDatabase.getInstance().getReference();
             String key = refrence.child("MyTasks").push().getKey();
             task.setKey(key);
-            refrence.child("MyTasks")
-        }
+            refrence.child("MyTasks").child(key).setValue(task).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if ((task.isSuccessful())){
+                        Toast.makeText(AddTaskActivity.this, "add Successful", Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                    {
+                        Toast.makeText(AddTaskActivity.this, "Add Faild", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+            });
+
+
+            }
+
     }
         @RequiresApi(api = Build.VERSION_CODES.N)
         public void onClick(View v){

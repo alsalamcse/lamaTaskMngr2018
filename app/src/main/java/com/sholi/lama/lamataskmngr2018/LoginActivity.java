@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.sholi.lama.lamataskmngr2018.taskfragments.AddTaskActivity;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText etEmail;
@@ -36,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 dataHandler();
+
             }
         });
     }
@@ -58,23 +60,25 @@ public class LoginActivity extends AppCompatActivity {
 
     }
     private void signIn(String email,String password){
-        FirebaseAuth auth=FirebaseAuth.getInstance().getInstance();
-        auth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()){
-                    Toast.makeText(LoginActivity.this,"signIn Successful",Toast.LENGTH_SHORT).show();
-                    Intent intent=new Intent((LoginActivity.this,MainFCMAtivity.class));
-                    startActivity(intent);
-                    finish();
+            FirebaseAuth auth=FirebaseAuth.getInstance().getInstance();
+            auth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()){
+                        Toast.makeText(LoginActivity.this,"signIn Successful",Toast.LENGTH_SHORT).show();
+                        Intent intent=new Intent(LoginActivity.this,MainTabsActivity.class );
+                        startActivity(intent);
+                        finish();
 
-            }
-            else {
-                    Toast.makeText(LoginActivity.this,"signIn failed"+task.getException().getMessage())
+                    }
+                    else {
+                        Toast.makeText(LoginActivity.this, "signIn"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        task.getException().printStackTrace();
+                    }
                 }
-        })
 
-        }
+            });
+
 
     }
 }

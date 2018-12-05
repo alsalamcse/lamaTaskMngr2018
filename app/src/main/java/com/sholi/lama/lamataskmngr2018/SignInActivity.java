@@ -96,18 +96,15 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     public void createAcount(String email, String password) {
-        auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(SignInActivity.this, new OnCompleteListener<AuthResult>() {
+        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(SignInActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful())
-                {
+                if (task.isSuccessful()) {
                     Toast.makeText(SignInActivity.this, "Authentication Successful.", Toast.LENGTH_SHORT).show();
                     //updateUserProfile(task.getResult().getUser());
                     finish();
-                }
-                else
-                {
-                    Toast.makeText(SignInActivity.this, "Authentication failed."+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(SignInActivity.this, "Authentication failed." + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     task.getException().printStackTrace();
                 }
             }
@@ -115,14 +112,11 @@ public class SignInActivity extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i= new Intent(getApplication(),LoginActivity.class);
+                Intent i = new Intent(getApplication(), MainTabsActivity.class);
                 startActivity(i);
             }
-        });    }
-
-
-
-
+        });
+    }
 }
 
 
