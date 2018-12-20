@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "124171262326-2p48cte9civfc6kj68u396fm8k10iueb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sholi.lama.lamataskmngr2018",
+            "certificate_hash": "8d4e87598d212bdb282d05faa7766dc9c486dbdf"
+          }
+        },
+        {
           "client_id": "124171262326-4gd0qv5294s9ls269radbd9f8q5u98ek.apps.googleusercontent.com",
           "client_type": 3
         }
